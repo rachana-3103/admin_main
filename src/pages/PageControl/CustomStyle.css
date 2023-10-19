@@ -1,0 +1,24 @@
+.ql-toolbar.ql-snow {
+    border: #ccc0;
+    border-bottom: 1px solid #eeeeee;
+}
+
+.ql-container.ql-snow {
+    border: #ccc0;
+}
+
+.quill {
+    height: 380px;
+    border-radius: 20px;
+}
+
+.ql-editor {
+    height: 87%;
+}
+
+.ck-editor__editable_inline {
+    min-height: 400px;
+    height: 400px;
+    max-height: 400px;
+}
+
