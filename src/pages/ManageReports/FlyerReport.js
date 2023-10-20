@@ -3,7 +3,8 @@ import { flyperReports } from '../../api/apiHandler';
 import { Link, useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Chart from 'react-apexcharts';
-
+import DataTable from 'react-data-table-component';
+import DataTableExtensions from "react-data-table-component-extensions";
 
 function FlyerReport() {
     const navigate = useNavigate();
@@ -151,6 +152,58 @@ function FlyerReport() {
         setRep([])
     }
 
+    const columns1 =  [
+      {
+          name: 'Order ID',
+          selector: row => row.order_id,
+          cellExport: row => row.order_id,
+          sortable: true,
+      },
+      {
+          name: 'Product ID',
+          selector: row => row.product_id,
+          cell: (row) => <p>{row.product_id}</p>,
+          sortable: true,
+      },
+      {
+          name: 'Address',
+          selector: row => row.address,
+          cellExport: row => row.address,
+          sortable: true,
+      },
+      {
+        name: 'Order Date',
+        selector: row => row.order_date,
+        cell: (row) => <p>{row.order_date}</p>,
+        sortable: true,
+    },
+      {
+          name: 'Delivery Date',
+          selector: row => row.deliver_datetime,
+          cell: (row) => <p>{row.deliver_datetime}</p>,
+          sortable: true,
+      },
+      {
+          name: 'Amount',
+          selector: row => row.payment,
+          cell: (row) => <p> $ {(Math.round(row.payment * 100) / 100).toFixed(2)}</p>,
+      },
+      {
+          name: 'Order Status',
+          selector: row => row.status,
+          cell: (row) => <>{row.status == 'Delivered' ? <div className='alert alert-success m-0'><strong>{row.status}</strong></div> : (row.status == 'Order Cancelled' || row.status == 'Rejected') ? <div className='alert alert-danger m-0'><strong>{row.status}</strong></div> : row.status == 'Order Placed' ? <div className='alert alert-warning m-0'><strong>{row.status}</strong></div>: <div className='alert alert-info m-0'><strong>{row.status}</strong></div>}</>
+      },
+  ];
+
+  const customStyles = {
+    headCells: {
+        style: {
+            fontWeight: 'bold',
+            fontSize: '14px'
+        },
+    },
+};
+
   return (
     <>
     <section className="content">
@@ -197,14 +250,14 @@ function FlyerReport() {
                      </div>
                    </div>
                  </div>
-                 <div class="col-lg-2 col-md-2 col-sm-2">
-                      <div class="form-group">
+                 {/* <div class="col-lg-2 col-md-2 col-sm-2"> */}
+                      {/* <div class="form-group">
                         <div class="flaot-right">
                         <label> &nbsp;</label><br />
                           <button class="btn btn-raised btn-success m-l-15 waves-effect" onClick={() => downloadSVG("LineGraph1")} >Download</button>
                         </div>
                       </div>
-                    </div>
+                    </div> */}
 
                  <div className='col-lg-2 offset-md-1 col-md-2 col-sm-2'>
                  <div className="card l-slategray">
@@ -224,7 +277,14 @@ function FlyerReport() {
                </div>
 
                </div>
-               <Chart options={incomeData2.options} series={incomeData2.series} type="line" height={310} />
+               <div role="tabpanel" class="tab-pane" id="messages"> 
+                            <div className='table-responsive'>
+                                        <DataTableExtensions columns={columns1} data={rep}>
+                                            <DataTable columns={columns1} data={rep} responsive pagination customStyles={customStyles} />
+                                        </DataTableExtensions>
+                                    </div>
+                            </div>
+               {/* <Chart options={incomeData2.options} series={incomeData2.series} type="line" height={310} /> */}
                {/* <DataTableExtensions columns={columns}
                  data={rep}>
                  <DataTable

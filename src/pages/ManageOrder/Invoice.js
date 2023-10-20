@@ -99,7 +99,7 @@ function Invoice() {
                                     </div>
                                     <hr />
                                     <div className="row">
-                                        <div className="col-md-6 col-sm-6">
+                                        <div className="col-md-6 col-sm-6" style={{ marginBottom: '20px' }}>
                                             <address>
                                                 <strong>{order.name}</strong>
                                                 <br />
@@ -109,6 +109,9 @@ function Invoice() {
                                             </address>
                                         </div>
                                         <div className="col-md-6 col-sm-6 text-right">
+                                            <span>
+                                                <strong>Business Name: </strong> {order.business_name}
+                                            </span><br/>
                                             <span>
                                                 <strong>Order Date: </strong> {order.inserted_at}
                                             </span><br/>
@@ -146,7 +149,7 @@ function Invoice() {
                                                         {item && item.map((item, int) => {
                                                             return (
                                                                 <tr key={int}>
-                                                                    <td>#</td>
+                                                                    <td>{item.id}</td>
                                                                     <td><img className="rounded image-popup" alt="product" style={{ width: 40, height: 40 }} src={item.image} /></td>
                                                                     <td>{item.name}</td>
                                                                     <td>{item.quantity}</td>

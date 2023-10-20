@@ -68,6 +68,7 @@ function ManageOrder() {
     const orsdedeat = (id) => {
         setItem([])
         orderItemDetails({ id: id }).then((response) => {
+            console.log("🚀 ~ response:", response)
             if (response.data.code == 1) {
                 setItem(response.data.data)
             } else {
@@ -326,10 +327,10 @@ function ManageOrder() {
 
 <div class="body"> 
                         <ul class="nav nav-tabs">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#alle" onClick={() => { setTag(''); setTag('all'); setOrder([]); changeOrderdE('all') }}>All</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" onClick={() => { setTag(''); setTag('received'); setOrder([]); changeOrderdE('received') }}>Active</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" onClick={() => { setTag(''); setTag('completed'); setOrder([]); changeOrderdE('completed') }}>Completed</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" onClick={() => { setTag(''); setTag('cancelled'); setOrder([]); changeOrderdE('cancelled') }}>Cancelled / Rejected</a></li>
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#alle" onClick={() => { setTag(''); setTag('all'); setOrder([]); changeOrderdE('all') }}>All</a></li>
                         </ul>                        
                         <div class="tab-content">
                         <div role="tabpanel" class="tab-pane in active" id="alle">
@@ -435,7 +436,8 @@ function ManageOrder() {
                                     </div>
                                     <hr />
                                     <div className="row">
-                                        <div className="col-md-6 col-sm-6">
+                                        <div className="col-md-6 col-sm-6 text-top" 
+                                         style={{ marginBottom: '20px', marginTop:0, paddingTop: 0 }}>
                                             <address>
                                                 <strong>{order1.name}</strong>
                                                 <br />
@@ -445,6 +447,9 @@ function ManageOrder() {
                                             </address>
                                         </div>
                                         <div className="col-md-6 col-sm-6 text-right">
+                                            <span>
+                                                <strong>Business Name: </strong> {order1.business_name}
+                                            </span><br/>
                                             <span>
                                                 <strong>Order Date: </strong> {order1.inserted_at}
                                             </span><br/>
@@ -482,7 +487,7 @@ function ManageOrder() {
                                                         {item && item.map((item, int) => {
                                                             return (
                                                                 <tr key={int}>
-                                                                    <td>#</td>
+                                                                    <td>{item.id}</td>
                                                                     <td><img className="rounded image-popup" alt="product" style={{ width: 40, height: 40 }} src={item.image} /></td>
                                                                     <td>{item.name}</td>
                                                                     <td>{item.quantity}</td>

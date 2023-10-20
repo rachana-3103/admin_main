@@ -32,6 +32,7 @@ const ReactS3Client = new S3(config);
 
 function ManageProduct() {
     const [order, setOrder] = useState([]);
+    const [product, setProduct] = useState([]);
     const [prod, setProd] = useState([]);
     const navigate = useNavigate()
     const [createcat, setcreatecat] = useState('');
@@ -59,14 +60,14 @@ function ManageProduct() {
         getonload();
     }, []);
     const getonload = () => {
-        getProductList({ id: 0}).then((response) => {
-            if (response.data.code == 1) {
-                setProd(response.data.data)
-                Swal.close();
-            } else {
-                Swal.close()
-            }
-        });
+        // getProductList({ id: 0}).then((response) => {
+        //     if (response.data.code == 1) {
+        //         setProduct(response.data.data)
+        //         Swal.close();
+        //     } else {
+        //         Swal.close()
+        //     }
+        // });
         getCategoryList({ id: 0}).then((response) => {
             if (response.data.code == 1) {
                 //delete response.data.data[0]
@@ -75,33 +76,33 @@ function ManageProduct() {
             }
         });
            
-            //   ManageProducts({ tag: tag }).then((response) => {
-            //     if (response.data.code == 1) {
-            //         setOrder(response.data.data)
-            //         Swal.close();
-            //     } else {
-            //         Swal.close()
-            //     }
-            // });
+        ManageProducts({ tag: tag }).then((response) => {
+                if (response.data.code == 1) {
+                    setProduct(response.data.data)
+                    Swal.close();
+                } else {
+                    Swal.close()
+                }
+            });
     }
 
-    // const changeProductE = (taqg) => {
-    //     console.log("🚀 ~ taqg:", taqg)
-    //     Swal.fire({
-    //           title: 'Please wait...',
-    //           didOpen: () => {
-    //           Swal.showLoading()
-    //           }
-    //       })
-    //     ManageProducts({ tag: taqg }).then((response) => {
-    //         if (response.data.code == 1) {
-    //             setOrder(response.data.data)
-    //             Swal.close();
-    //         } else {
-    //             Swal.close()
-    //         }
-    //     });
-    // }
+    const changeProductE = (taqg) => {
+        console.log("🚀 ~ taqg:", taqg)
+        Swal.fire({
+              title: 'Please wait...',
+              didOpen: () => {
+              Swal.showLoading()
+              }
+          })
+          ManageProducts({ tag: taqg }).then((response) => {
+            if (response.data.code == 1) {
+                setProduct(response.data.data)
+                Swal.close();
+            } else {
+                Swal.close()
+            }
+        });
+    }
 
     const imgchnge = (e) => {
         setUpd([])
@@ -313,15 +314,15 @@ function ManageProduct() {
                                     <button className="btn btn-raised btn-primary waves-effect" style={{margin:'15px'}} onClick={()=> (navigate(`/product/create`))}>Create Product</button>
                                 </div>
                                   <div className="body">
-                                  {/* <ul class="nav nav-tabs">
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#alle" onClick={() => { setTag(''); setTag('all'); setOrder([]); changeProductE('all') }}>All</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" onClick={() => { setTag(''); setTag('Fruits'); setOrder([]); changeProductE('Fruits') }}>Fruits</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" onClick={() => { setTag(''); setTag('Vegetables'); setOrder([]); changeProductE('Vegetables') }}>Vegetables</a></li>
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" onClick={() => { setTag(''); setTag('Grocery'); setOrder([]); changeProductE('Grocery') }}>Grocery</a></li>
-                        </ul>  */}
+                                  <ul class="nav nav-tabs">
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#alle" onClick={() => { setTag(''); setTag('all'); setProduct([]); changeProductE('all') }}>All</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" onClick={() => { setTag(''); setTag('Fruits'); setProduct([]); changeProductE('Fruits') }}>Fruits</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" onClick={() => { setTag(''); setTag('Vegetables'); setProduct([]); changeProductE('Vegetables') }}>Vegetables</a></li>
+                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" onClick={() => { setTag(''); setTag('Grocery'); setProduct([]); changeProductE('Grocery') }}>Grocery</a></li>
+                        </ul> 
                                       <div className='table-responsive'>
-                                      <DataTableExtensions columns={columns} data={prod}>
-                          <DataTable columns={columns} data={prod} responsive pagination customStyles={customStyles}/>
+                                      <DataTableExtensions columns={columns} data={product}>
+                          <DataTable columns={columns} data={product} responsive pagination customStyles={customStyles}/>
                         </DataTableExtensions>
                                       </div>
                                   </div>
