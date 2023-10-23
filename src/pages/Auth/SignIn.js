@@ -53,7 +53,7 @@ export default function SignIn(props) {
                         <div className="row">
                             <div className="col-lg-12">
                                 <div className="header slideDown">
-                                    <div className="logo"><img src='http://3.26.203.80/api/logo192.png' style={{width: 80}} alt="ballina" /></div>
+                                    <div className="logo"><img src='http://13.238.15.59/api/logo192.png' style={{width: 80}} alt="ballina" /></div>
                                     <h1>Ballina Farm Fresh</h1>
                                 </div>
                             </div>

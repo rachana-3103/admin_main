@@ -87,7 +87,7 @@ function Invoice() {
                                     <div className="row clearfix">
                                         <div className="col-md-12">
                                             <img
-                                                src="http://3.26.203.80/api/logo192.png"
+                                                src="http://13.238.15.59/api/logo192.png"
                                                 width={80}
                                                 alt="ballina"
                                             />

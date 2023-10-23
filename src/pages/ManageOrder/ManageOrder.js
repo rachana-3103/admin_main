@@ -325,12 +325,12 @@ function ManageOrder() {
                                         </DataTableExtensions>
                                     </div> */}
 
-<div class="body"> 
+                        <div class="body"> 
                         <ul class="nav nav-tabs">
-                            <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#home" onClick={() => { setTag(''); setTag('received'); setOrder([]); changeOrderdE('received') }}>Active</a></li>
+                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#home" onClick={() => { setTag(''); setTag('received'); setOrder([]); changeOrderdE('received') }}>Active</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#messages" onClick={() => { setTag(''); setTag('completed'); setOrder([]); changeOrderdE('completed') }}>Completed</a></li>
                             <li class="nav-item"><a class="nav-link" data-toggle="tab" href="#profile" onClick={() => { setTag(''); setTag('cancelled'); setOrder([]); changeOrderdE('cancelled') }}>Cancelled / Rejected</a></li>
-                            <li class="nav-item"><a class="nav-link active" data-toggle="tab" href="#alle" onClick={() => { setTag(''); setTag('all'); setOrder([]); changeOrderdE('all') }}>All</a></li>
+                            <li class="nav-item"><a class="nav-link " data-toggle="tab" href="#alle" onClick={() => { setTag(''); setTag('all'); setOrder([]); changeOrderdE('all') }}>All</a></li>
                         </ul>                        
                         <div class="tab-content">
                         <div role="tabpanel" class="tab-pane in active" id="alle">
@@ -424,7 +424,7 @@ function ManageOrder() {
                                     <div className="row clearfix">
                                         <div className="col-md-12">
                                             <img
-                                                src="http://3.26.203.80/api/logo192.png"
+                                                src="http://13.238.15.59/api/logo192.png"
                                                 width={80}
                                                 alt="ballina"
                                             />
@@ -439,6 +439,9 @@ function ManageOrder() {
                                         <div className="col-md-6 col-sm-6 text-top" 
                                          style={{ marginBottom: '20px', marginTop:0, paddingTop: 0 }}>
                                             <address>
+                                                <span>
+                                                <strong>Business Name: </strong> {order1.business_name}
+                                                </span><br/>
                                                 <strong>{order1.name}</strong>
                                                 <br />
                                                 {order1.address}
@@ -447,9 +450,7 @@ function ManageOrder() {
                                             </address>
                                         </div>
                                         <div className="col-md-6 col-sm-6 text-right">
-                                            <span>
-                                                <strong>Business Name: </strong> {order1.business_name}
-                                            </span><br/>
+                                            
                                             <span>
                                                 <strong>Order Date: </strong> {order1.inserted_at}
                                             </span><br/>

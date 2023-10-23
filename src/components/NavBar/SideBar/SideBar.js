@@ -23,7 +23,7 @@ export default function SideBar() {
     <aside id="leftsidebar" className="sidebar">
     <div className="user-info" style={{background:'#fff'}}>
     <div class="image">
-            <img src="http://3.26.203.80/api/logo192.png" width="50" height="50" alt="User" />
+            <img src="http://13.238.15.59/api/logo192.png" width="50" height="50" alt="User" />
         </div>
         <div className="info-container">
             <div className="name">{localStorage.getItem("MAname")}</div>

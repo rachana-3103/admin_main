@@ -11,7 +11,7 @@ const showMessage = (msg) => {
   })
 }
 const axiosClient = axios.create({
-    baseURL: 'http://3.26.203.80:8080/',
+    baseURL: 'http://13.238.15.59:8080/',
     // baseURL: 'http://localhost:8080/',
     headers: {
       'api-key':'m1HjGv5URBT9qldbeobTEvUaqBcfsxjn',

@@ -250,14 +250,14 @@ function FlyerReport() {
                      </div>
                    </div>
                  </div>
-                 {/* <div class="col-lg-2 col-md-2 col-sm-2"> */}
-                      {/* <div class="form-group">
+                 <div class="col-lg-2 col-md-2 col-sm-2">
+                      <div class="form-group">
                         <div class="flaot-right">
                         <label> &nbsp;</label><br />
                           <button class="btn btn-raised btn-success m-l-15 waves-effect" onClick={() => downloadSVG("LineGraph1")} >Download</button>
                         </div>
                       </div>
-                    </div> */}
+                    </div>
 
                  <div className='col-lg-2 offset-md-1 col-md-2 col-sm-2'>
                  <div className="card l-slategray">

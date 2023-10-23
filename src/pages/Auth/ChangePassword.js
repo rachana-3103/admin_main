@@ -63,7 +63,7 @@ function ChangePassword() {
             <div class="row">
                 <div class="col-lg-12">
                     <div class="header slideDown">
-                        <div class="logo"><img src="http://3.26.203.80/api/logo192.png" style={{width: 80}} alt="Ballina's"/></div>
+                        <div class="logo"><img src="http://13.238.15.59/api/logo192.png" style={{width: 80}} alt="Ballina's"/></div>
                     </div>
                 </div>
                 <form class="col-lg-12" action='' onSubmit={getonload} method="">
